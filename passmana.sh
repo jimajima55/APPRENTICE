@@ -15,6 +15,28 @@ while [ "$input" != " Exit" ]; do
        echo "パスワードの追加は成功しました。" 
        ;;
 
+
+
+      "Get Password")
+      # Get Password が入力された場合
+        echo "サービス名を入力してください：";
+        read search_service
+
+      ## サービス名が保存されていた場合内容を表示  
+        result=$(grep -o  "$search_service" passmana_info.txt |  tr '\n' ',');
+        echo "grep result: $result"
+        if [ -n "$result" ]; then
+          echo "サービス名：$search_service"
+          echo "ユーザー名：$(echo $result | awk -F',' '{print $2}')"
+          echo "パスワード：$(echo $result | awk -F',' '{print $3}')"
+        else
+      ## サービス名が保存されていなかった場合
+          echo "そのサービスは登録されていません。"
+      fi
+      ;;
+
+
+
    esac
 
    echo "次の選択肢から入力してください("Add Password" "Get Password" "Exit")：";
