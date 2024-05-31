@@ -15,7 +15,6 @@ while true; do
        ;;
 
 
-
       "Get Password")
       # Get Password が入力された場合
         echo "サービス名を入力してください：";
@@ -33,6 +32,18 @@ while true; do
       fi
       ;;
 
+
+    "Exit")
+       echo "Thank you!"
+       break
+       ## プログラムが終了
+      ;;
+
+
+      *)
+      # Add Password/Get Password/Exit 以外が入力された場合
+        echo "入力が間違えています。Add Password/Get Password/Exit から入力してください。"
+      ;;
 
    esac
    echo "次の選択肢から入力してください("Add Password" / "Get Password" / "Exit")：";
