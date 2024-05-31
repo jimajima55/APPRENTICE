@@ -21,7 +21,7 @@ while true; do
         read search_service
 
       ## サービス名が保存されていた場合内容を表示  
-        result=$(grep -o  "$search_service" passmana_info.txt |  tr '\n' ',');
+        result=$(grep -o  "$search_service" ~/passmana_info.txt |  tr '\n' ',');
         if [ -n "$result" ]; then
           echo "サービス名：$search_service"
           echo "ユーザー名：$(echo $result | awk -F',' '{print $2}')"
