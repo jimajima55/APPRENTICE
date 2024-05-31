@@ -1,10 +1,9 @@
 echo "パスワードマネージャーへようこそ！"
-echo "次の選択肢から入力してください("Add Password" "Get Password" "Exit")：";
+echo "次の選択肢から入力してください("Add Password" / "Get Password" / "Exit")：";
 read input
 
 
-
-while [ "$input" != " Exit" ]; do
+while true; do
    case $input in
      "Add Password")
      # Add Password が入力された場合
@@ -24,7 +23,6 @@ while [ "$input" != " Exit" ]; do
 
       ## サービス名が保存されていた場合内容を表示  
         result=$(grep -o  "$search_service" passmana_info.txt |  tr '\n' ',');
-        echo "grep result: $result"
         if [ -n "$result" ]; then
           echo "サービス名：$search_service"
           echo "ユーザー名：$(echo $result | awk -F',' '{print $2}')"
@@ -36,13 +34,8 @@ while [ "$input" != " Exit" ]; do
       ;;
 
 
-
    esac
-
-   echo "次の選択肢から入力してください("Add Password" "Get Password" "Exit")：";
+   echo "次の選択肢から入力してください("Add Password" / "Get Password" / "Exit")：";
    read input
 done
 
-
-echo "Thank you!"
-## プログラムが終了
